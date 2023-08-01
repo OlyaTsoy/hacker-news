@@ -1,0 +1,24 @@
+.comment__by {
+  margin-top: 13px;
+  margin-bottom: 3px;
+  color: #578a8a;
+  font-size: 13px;
+}
+
+.comment__text {
+  margin-bottom: 4px;
+}
+
+.list__child {
+  margin-left: 20px;
+}
+
+.comments__btn {
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 5px;
+  background-color: #98b4b7;
+  color: aliceblue;
+  cursor: pointer;
+  border: 1px solid aliceblue;
+}
