@@ -1,0 +1,10 @@
+.comments__button {
+  display: flex;
+}
+
+.comments__notFound {
+  font-size: 20px;
+  color: #9B7161;
+  font-weight: normal;
+  margin-top: 5px;
+}

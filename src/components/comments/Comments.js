@@ -1,3 +1,4 @@
+import "./comments.css";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getStory } from "../../services/HackerNewsService";
@@ -53,14 +54,14 @@ const Comments = () => {
   const date = day + '.' + month + '.' + years;
 
   return story ? (
-    <main className="news">
+    <main className="comments">
       <div className="container">
         <header className="header">
           <Link to="/" className="title">
             Hacker News
           </Link>
-          <div className="news__button">
-            <Link to="/" className="button"><BackBtn></BackBtn></Link>
+          <div className="comments__button">
+            <Link to="/"><BackBtn className="button"></BackBtn></Link>
             <UpdateBtn className="button" onClick={handleButtonUpdate}></UpdateBtn>
           </div>
         </header>
@@ -76,9 +77,9 @@ const Comments = () => {
             </div>
           </a>
           <ul className="list__title">Comments:
-            {comments.map((comment, id) => (
+            {comments.length < 1 ? (<h2 className="comments__notFound">No comments...</h2>) : (comments.map((comment, id) => (
               <CommentKids key={id} comment={comment} descendants={story.descendants}/>
-            ))}
+            )))}
           </ul>
         </ul>
       </div>

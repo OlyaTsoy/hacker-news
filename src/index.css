@@ -52,14 +52,18 @@ a {
   cursor: pointer;
   display: block;
   width: 70px;
+  width: 70px;
+  margin-right: 20px;
+  margin-bottom: 12px;
 }
 
-.button:hover {
-
+.button path:hover {
+  fill: #805d50;
+  transition: .1s all ease-in;
 }
 
 .title {
-  font-size: 64px;
+  font-size: 70px;
   margin-left: 20px;
   color: #64514A;
   font-family: 'Koulen', cursive;
