@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { getStory } from "../../services/HackerNewsService";
 import { getComment } from "../../services/HackerNewsService";
 import CommentKids from "../commentKids/CommentKids";
+import { ReactComponent as UpdateBtn } from "../../assets/updateBtn.svg";
+import { ReactComponent as BackBtn} from "../../assets/backBtn.svg";
 
 const Comments = () => {
   const [story, setStory] = useState({});
@@ -58,12 +60,8 @@ const Comments = () => {
             Hacker News
           </Link>
           <div className="news__button">
-            <Link to="/" className="button">
-              Назад
-            </Link>
-            <button className="button"
-              onClick={handleButtonUpdate}
-            >Обновить</button>
+            <Link to="/" className="button"><BackBtn></BackBtn></Link>
+            <UpdateBtn className="button" onClick={handleButtonUpdate}></UpdateBtn>
           </div>
         </header>
         <ul className="items">
@@ -72,14 +70,14 @@ const Comments = () => {
               <span>{story.title}</span>
             </div>
             <div className="list__desc">
-              <span>by: {story.by} </span>
-              <span>date: {date} </span>
-              <span>comment: {story.descendants} </span>
+              <span>by: {story.by} | </span>
+              <span>date: {date} | </span>
+              <span>{story.descendants} comments</span>
             </div>
           </a>
           <ul className="list__title">Comments:
             {comments.map((comment, id) => (
-              <CommentKids key={id} comment={comment}/>
+              <CommentKids key={id} comment={comment} descendants={story.descendants}/>
             ))}
           </ul>
         </ul>

@@ -4,6 +4,7 @@ import { getStories } from "../../services/HackerNewsService";
 import Story from "../story/Story";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import { ReactComponent as UpdateBtn } from "../../assets/updateBtn.svg";
 
 const Stories = () => {
   const [stories, setStories] = useState([]);
@@ -64,9 +65,7 @@ const Stories = () => {
           <Link to="/" className="title">
            Hacker News
           </Link>
-          <button className="button"
-           onClick={handleButtonUpdate}
-           >Обновить</button>
+          <UpdateBtn className="button" onClick={handleButtonUpdate}></UpdateBtn>
         </header>
           {isLoading ? (<h1>Loading...Please, wait!</h1>) : (<ul className="items">
             {stories.slice(0, 100).map((storyId, idx) => (

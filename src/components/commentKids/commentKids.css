@@ -1,12 +1,15 @@
 .comment__by {
-  margin-top: 13px;
-  margin-bottom: 3px;
-  color: #578a8a;
-  font-size: 13px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #9B7161;
+  font-size: 20px;
+  font-weight: normal;
 }
 
 .comment__text {
-  margin-bottom: 4px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  color: #9B7161;
 }
 
 .list__child {
@@ -14,11 +17,9 @@
 }
 
 .comments__btn {
-  font-size: 12px;
-  padding: 4px 6px;
-  border-radius: 5px;
-  background-color: #98b4b7;
-  color: aliceblue;
+  font-size: 14px;
+  color: #9B7161;
+  font-weight: bold;
   cursor: pointer;
-  border: 1px solid aliceblue;
+  text-decoration: underline;
 }

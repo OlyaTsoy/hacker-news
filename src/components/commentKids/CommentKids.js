@@ -2,7 +2,7 @@ import "./commentKids.css";
 import { useState, useEffect } from "react";
 import { getComment } from "../../services/HackerNewsService";
 
-const CommentKids = ({comment}) => {
+const CommentKids = ({comment, descendants}) => {
   const [commentKids, setCommentKids] = useState([]);
   const [openChildComment, setOpenChildComment] = useState(false);
 
@@ -30,7 +30,7 @@ const CommentKids = ({comment}) => {
           <>
           <li className="list list__child" key={com}>
             <div className="comment__by ">
-              <span>by: {a.by}</span>
+              <span>{a.by}</span>
             </div>
             <div className="comment__text">
               <span>{a.text}</span>
@@ -52,7 +52,7 @@ const CommentKids = ({comment}) => {
   return (
     <li className="list">
       <div className="comment__by">
-        <span>by: {comment.by}</span>
+        <span>{comment.by}</span>
       </div>
       <div className="comment__text">
         <span>{comment.text}</span>
@@ -61,9 +61,9 @@ const CommentKids = ({comment}) => {
         {asd}
        </ul>
        {comment.kids?.length ?
-          <button className="comments__btn" onClick={toggleKidsComment}>
-            {openChildComment ? "Close" : "More"}
-          </button>
+          <div className="comments__btn" onClick={toggleKidsComment}>
+            {openChildComment ? "Hide" : `Show ${descendants} reply`}
+          </div>
         : ''}
     </li>
   )

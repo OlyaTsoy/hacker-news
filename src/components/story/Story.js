@@ -22,10 +22,10 @@ const Story = ({storyId, idx}) => {
         <span>{story.title}</span>
       </div>
       <div className="list__desc">
-        <span>rating: {story.score} </span>
-        <span>by: {story.by} </span>
-        <span>date: {date} </span>
-        <span>comment: {story.descendants} </span>
+        <span>Rating: {story.score} | </span>
+        <span>by: {story.by} | </span>
+        <span>date: {date} | </span>
+        <span>{story.descendants} comments</span>
       </div>
     </Link>
   ) : null;
