@@ -14,38 +14,36 @@ const Comments = () => {
   const {storyId} = useParams();
 
   useEffect(() => {
-    const a = async () => {
+    const fetchStory = async () => {
       const data = await getStory(storyId)
       .then((data) =>
         setStory(data)
       );
     }
-    a();
+    fetchStory();
   }, []);
 
   useEffect(() => {
-    const b = async () => {
+    const fetchComment = async () => {
       try {
-        story.kids?.forEach(async (el) => {
-            const data = await getComment(el);
+        story.kids?.forEach(async (kid) => {
+            const data = await getComment(kid);
             setComments((prev) => {
               return [...prev, data]
             });
-            console.log(comments);
           });
       } catch (err) {
         console.log(err);
       }
     }
-    b();
+    fetchComment();
   }, [story.kids]);
 
-  const handleButtonUpdate = () => {
-    const b = async () => {
-      await getComment(story.kids)
-    }
-    console.log(b)
-  };
+  // const handleButtonUpdate = () => {
+  //   const updateComment = async () => {
+  //     await getComment(story.kids)
+  //   }
+  // };
 
   const newTime = new Date(story.time * 1000);
   const years = newTime.getFullYear();
@@ -62,7 +60,10 @@ const Comments = () => {
           </Link>
           <div className="comments__button">
             <Link to="/"><BackBtn className="button"></BackBtn></Link>
-            <UpdateBtn className="button" onClick={handleButtonUpdate}></UpdateBtn>
+            <UpdateBtn className="button"
+              // onClick={handleButtonUpdate}
+            >
+            </UpdateBtn>
           </div>
         </header>
         <ul className="items">
@@ -77,7 +78,7 @@ const Comments = () => {
             </div>
           </a>
           <ul className="list__title">Comments:
-            {comments.length < 1 ? (<h2 className="comments__notFound">No comments...</h2>) : (comments.map((comment, id) => (
+            {comments.length ? (<h2 className="comments__notFound">No comments...</h2>) : (comments.map((comment, id) => (
               <CommentKids key={id} comment={comment} descendants={story.descendants}/>
             )))}
           </ul>

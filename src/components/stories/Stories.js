@@ -30,14 +30,14 @@ const Stories = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    const storiesData = async () => {
+    const fetchStories = async () => {
       await getStories()
       .then((data) => {
         return setStories(data)
       });
       // setInterval(() => getStories().then((data) => setStories(data)), 1000);
     }
-    storiesData();
+    fetchStories();
     setIsLoading(false)
   }, []);
 
@@ -48,7 +48,6 @@ const Stories = () => {
         return setStories(data)
       });
     }
-    console.log(storiesData())
   };
 
   // const handlePageChange = (event) => {

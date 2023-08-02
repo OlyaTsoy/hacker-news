@@ -6,7 +6,7 @@ const Story = ({storyId, idx}) => {
   const [story, setStory] = useState({});
 
   useEffect(() => {
-    getStory(storyId).then(data => data && data.url && setStory(data));
+    getStory(storyId).then(data => setStory(data));
   }, []);
 
   const newTime = new Date(story.time * 1000);

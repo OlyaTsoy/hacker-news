@@ -7,12 +7,12 @@ const CommentKids = ({comment, descendants}) => {
   const [openChildComment, setOpenChildComment] = useState(false);
 
   useEffect(() => {
-    const b = async () => {
+    const fetchComment = async () => {
     try {
-      comment.kids?.forEach(async (el) => {
-        const a = await getComment(el)
+      comment.kids?.forEach(async (kid) => {
+        const data = await getComment(kid)
           setCommentKids((prev) => {
-            return [...prev, a]
+            return [...prev, data]
           })
       })
 
@@ -20,20 +20,19 @@ const CommentKids = ({comment, descendants}) => {
       console.log(err)
     }
     }
-    b();
+    fetchComment();
   }, []);
 
-  const asd = commentKids.map((a, com) => {
-    console.log(commentKids)
+  const kids = commentKids.map((kid, com) => {
       if (openChildComment) {
         return (
           <>
           <li className="list list__child" key={com}>
             <div className="comment__by ">
-              <span>{a.by}</span>
+              <span>{kid.by}</span>
             </div>
             <div className="comment__text">
-              <span>{a.text}</span>
+              <span>{kid.text}</span>
             </div>
           </li>
           {/* <ul>
@@ -58,7 +57,7 @@ const CommentKids = ({comment, descendants}) => {
         <span>{comment.text}</span>
        </div>
        <ul>
-        {asd}
+        {kids}
        </ul>
        {comment.kids?.length ?
           <div className="comments__btn" onClick={toggleKidsComment}>
