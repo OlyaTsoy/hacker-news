@@ -32,7 +32,7 @@ const CommentKids = ({comment, descendants}) => {
               <span>{kid.by}</span>
             </div>
             <div className="comment__text">
-              <span>{kid.text}</span>
+              <span dangerouslySetInnerHTML={ {__html: kid.text}}></span>
             </div>
           </li>
           {/* <ul>
@@ -54,14 +54,14 @@ const CommentKids = ({comment, descendants}) => {
         <span>{comment.by}</span>
       </div>
       <div className="comment__text">
-        <span>{comment.text}</span>
+        <span dangerouslySetInnerHTML={ {__html: comment.text}}></span>
        </div>
        <ul>
         {kids}
        </ul>
        {comment.kids?.length ?
           <div className="comments__btn" onClick={toggleKidsComment}>
-            {openChildComment ? "Hide" : `Show ${descendants} reply`}
+            {openChildComment ? "Hide" : "Show"}
           </div>
         : ''}
     </li>

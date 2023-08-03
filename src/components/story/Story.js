@@ -1,24 +1,22 @@
 import { getStory } from "../../services/HackerNewsService";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import moment from "moment/moment";
 
-const Story = ({storyId, idx}) => {
+const Story = ({storyId, idx, currentPage}) => {
   const [story, setStory] = useState({});
 
   useEffect(() => {
     getStory(storyId).then(data => setStory(data));
   }, []);
 
-  const newTime = new Date(story.time * 1000);
-  const years = newTime.getFullYear();
-  const month = newTime.getMonth();
-  const day = newTime.getDate();
-  const date = day + '.' + month + '.' + years;
+  const date = moment.unix(story.time).format("DD.MM.YYYY");
+  console.log(idx)
 
   return story && story.id ? (
     <Link to={`${story.id}`} className="list">
       <div className="list__title">
-        <span>{idx}</span>
+        <span>{(currentPage - 1) * 10 + idx + '. '}</span>
         <span>{story.title}</span>
       </div>
       <div className="list__desc">

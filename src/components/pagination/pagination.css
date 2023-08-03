@@ -1,0 +1,25 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__page {
+  font-family: 'Roboto', sans-serif;
+  color: #FFFFFF;
+  background-color: #9B7161;
+  border: none;
+  font-size: 25px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.pagination__page:hover {
+  background-color: #805d50;
+}
+
+.pagination__page-active {
+  background-color: #805d50;
+}

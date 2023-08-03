@@ -5,7 +5,8 @@ import { getStory } from "../../services/HackerNewsService";
 import { getComment } from "../../services/HackerNewsService";
 import CommentKids from "../commentKids/CommentKids";
 import { ReactComponent as UpdateBtn } from "../../assets/updateBtn.svg";
-import { ReactComponent as BackBtn} from "../../assets/backBtn.svg";
+import { ReactComponent as BackBtn } from "../../assets/backBtn.svg";
+import moment from "moment/moment";
 
 const Comments = () => {
   const [story, setStory] = useState({});
@@ -45,11 +46,7 @@ const Comments = () => {
   //   }
   // };
 
-  const newTime = new Date(story.time * 1000);
-  const years = newTime.getFullYear();
-  const month = newTime.getMonth();
-  const day = newTime.getDate();
-  const date = day + '.' + month + '.' + years;
+  const date = moment.unix(story.time).format("DD.MM.YYYY");
 
   return story ? (
     <main className="comments">
@@ -78,7 +75,7 @@ const Comments = () => {
             </div>
           </a>
           <ul className="list__title">Comments:
-            {comments.length ? (<h2 className="comments__notFound">No comments...</h2>) : (comments.map((comment, id) => (
+            {!comments.length ? (<h2 className="comments__notFound">No comments...</h2>) : (comments.map((comment, id) => (
               <CommentKids key={id} comment={comment} descendants={story.descendants}/>
             )))}
           </ul>
